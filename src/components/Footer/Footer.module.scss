@@ -1,0 +1,15 @@
+.footerContainer {
+  text-align: end;
+  max-height: 40px;
+  button {
+    margin-bottom: 32px;
+    margin-right: 32px;
+    width: 128px;
+    height: 40px;
+    background-color: transparent;
+    border-radius: 5px;
+    border-color: white;
+    color: white;
+    cursor: pointer;
+  }
+}

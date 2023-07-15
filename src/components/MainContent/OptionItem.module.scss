@@ -1,0 +1,103 @@
+.optionItem {
+  border-radius: 50%;
+  .circle {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .circleInCircle {
+      border-radius: 50%;
+      background: white;
+      box-shadow: inset 0px 5px 1px 2px #babfd4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+// size
+.optionItem[data-step='step1'] {
+  width: 145px;
+  height: 151px;
+  cursor: pointer;
+  .circle {
+    width: 145px;
+    height: 145px;
+    .circleInCircle {
+      width: 110px;
+      height: 110px;
+    }
+  }
+}
+.optionItem[data-step='step2'] {
+  width: 293px;
+  height: 300px;
+  .circle {
+    width: 293px;
+    height: 293px;
+    .circleInCircle {
+      width: 225px;
+      height: 225px;
+    }
+  }
+}
+
+// color
+.optionItem[data-type='scissors'] {
+  background-color: #c76c1b;
+  .circle {
+    background: linear-gradient(to right, hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+  }
+}
+.optionItem[data-type='paper'] {
+  background-color: #4664f4;
+  .circle {
+    background: linear-gradient(135deg, hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+  }
+}
+.optionItem[data-type='rock'] {
+  background-color: #db2e4d;
+  .circle {
+    background: linear-gradient(135deg, hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+  }
+}
+.optionItem[data-type='spock'] {
+  background-color: #3fb7cd;
+  .circle {
+    background: linear-gradient(135deg, hsl(189, 59%, 53%), hsl(189, 58%, 57%));
+  }
+}
+.optionItem[data-type='lizard'] {
+  background-color: #834ee3;
+  .circle {
+    background: linear-gradient(135deg, hsl(261, 73%, 60%), hsl(261, 72%, 63%));
+  }
+}
+
+// step1 position
+.optionItem[data-type='scissors'][data-step='step1'] {
+  position: absolute;
+  left: 42%;
+  top: 0%;
+}
+.optionItem[data-type='paper'][data-step='step1'] {
+  position: absolute;
+  right: 23%;
+  top: 20%;
+}
+.optionItem[data-type='rock'][data-step='step1'] {
+  position: absolute;
+  right: 25%;
+  bottom: 5%;
+}
+.optionItem[data-type='spock'][data-step='step1'] {
+  position: absolute;
+  left: 23%;
+  top: 20%;
+}
+.optionItem[data-type='lizard'][data-step='step1'] {
+  position: absolute;
+  left: 25%;
+  bottom: 5%;
+}
