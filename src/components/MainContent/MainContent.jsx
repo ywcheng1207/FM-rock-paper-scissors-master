@@ -4,25 +4,40 @@ import styles from './MainContent.module.scss'
 import Step2 from 'components/MainContent/Step2'
 import Step1 from './Step1'
 const { mainContentContainer } = styles
+const pickedType = ['scissors', 'paper', 'rock', 'spock', 'lizard']
 
 const MainContent = () => {
   const [step, setStep] = useState('step1')
-  const [picked, setPicked] = useState('')
+  const [userPicked, setUserPicked] = useState(null)
+  const [housePicked, setHousePicked] = useState(null)
+
   const handleStep = (phase) => {
+    if (phase === 'step1') {
+      setHousePicked(null)
+    }
     setStep(phase)
   }
-  const handlePick = (type) => {
+  const handleUserPick = (type) => {
     handleStep('step2')
-    // console.log(type)
-    setPicked(type)
+    setUserPicked(type)
+  }
+  const handleHousePick = (type) => {
+    setTimeout(() => {
+      setHousePicked(pickedType[type])
+    }, 500)
   }
 
   return (
     <div className={mainContentContainer}>
       {step === 'step1' ? (
-        <Step1 onStep={handleStep} onPick={handlePick} />
+        <Step1 onStep={handleStep} onPick={handleUserPick} />
       ) : (
-        <Step2 onStep={handleStep} picked={picked} />
+        <Step2
+          onStep={handleStep}
+          userPicked={userPicked}
+          housePicked={housePicked}
+          onHousePick={handleHousePick}
+        />
       )}
     </div>
   )

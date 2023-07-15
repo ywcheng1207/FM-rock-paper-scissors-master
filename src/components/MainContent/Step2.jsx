@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import OptionItem from './OptionItem'
 import styles from './Step2.module.scss'
 const {
   step2Container,
   yourPicked,
   yourPickedTitle,
-  housePicked,
+  housePickedContainer,
   housePickedTitle,
   waitContainer,
   wait,
@@ -25,26 +25,25 @@ const End = ({ onStep }) => {
   )
 }
 
-const Step2 = ({ onStep, picked }) => {
-  const [housePicking, setHousePicking] = useState(true)
-  setTimeout(() => {
-    setHousePicking(false)
-  }, 500)
+const Step2 = ({ onStep, userPicked, onHousePick, housePicked }) => {
+  useEffect(() => {
+    onHousePick(Math.floor(Math.random() * 5))
+  }, [])
 
   return (
     <div className={step2Container}>
       <div className={yourPicked}>
         <div className={yourPickedTitle}>YOU PICKED</div>
-        <OptionItem type={picked} phase="step2" />
+        <OptionItem type={userPicked} phase="step2" />
       </div>
-      {housePicking === false && <End onStep={onStep} />}
-      <div className={housePicked}>
+      {housePicked !== null && <End onStep={onStep} />}
+      <div className={housePickedContainer}>
         <div className={housePickedTitle}>THE HOUSE PICKED</div>
         <div className={waitContainer}>
-          {housePicking ? (
+          {housePicked === null ? (
             <div className={wait}></div>
           ) : (
-            <OptionItem type="scissors" phase="step2" />
+            <OptionItem type={housePicked} phase="step2" />
           )}
         </div>
       </div>
